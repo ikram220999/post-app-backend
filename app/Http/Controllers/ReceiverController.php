@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Store;
+use App\Models\Receiver;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
-class StoreController extends Controller
+class ReceiverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,6 @@ class StoreController extends Controller
     public function index()
     {
         //
-
-        $store = Store::all();
-        return response()->json($store, Response::HTTP_OK);
     }
 
     /**
@@ -45,10 +41,10 @@ class StoreController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Store  $store
+     * @param  \App\Models\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function show(Store $store)
+    public function show(Receiver $receiver)
     {
         //
     }
@@ -56,10 +52,10 @@ class StoreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Store  $store
+     * @param  \App\Models\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function edit(Store $store)
+    public function edit(Receiver $receiver)
     {
         //
     }
@@ -68,10 +64,10 @@ class StoreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Store  $store
+     * @param  \App\Models\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Store $store)
+    public function update(Request $request, Receiver $receiver)
     {
         //
     }
@@ -79,10 +75,10 @@ class StoreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Store  $store
+     * @param  \App\Models\Receiver  $receiver
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Store $store)
+    public function destroy(Receiver $receiver)
     {
         //
     }

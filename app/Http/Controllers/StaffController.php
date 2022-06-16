@@ -86,4 +86,10 @@ class StaffController extends Controller
     {
         //
     }
+
+    public function testrandom()
+    {
+    $staff = Staff::select("*")->inRandomOrder()->where("store_id", 1)->first();
+        return $staff;
+    }
 }

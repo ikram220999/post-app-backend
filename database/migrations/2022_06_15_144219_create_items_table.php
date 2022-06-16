@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('store_id');
             $table->integer('staff_id');
             $table->string('receiver_id');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
