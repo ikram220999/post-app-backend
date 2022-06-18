@@ -19,6 +19,10 @@ class ItemController extends Controller
     public function index()
     {
         //
+
+        $item = Item::all();
+
+        return response()->json($item, Response::HTTP_OK);
     }
 
     /**
@@ -72,9 +76,17 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show($id)
     {
         //
+        $item = Item::find($id);
+
+        if($item){
+            return response()->json($item, Response::HTTP_OK);
+        }else{
+            return response()->json($item, Response::HTTP_NOT_FOUND);
+        }
+
     }
 
     /**
