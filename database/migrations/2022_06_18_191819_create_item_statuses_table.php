@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('item_statuses', function (Blueprint $table) {
             $table->id();
+            $table->integer('item_id');
+            $table->string('code_status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
