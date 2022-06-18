@@ -53,5 +53,5 @@ Route::prefix('state')->group(function () {
 Route::prefix('item')->group(function () {
     Route::get('/', [ItemController::class, 'index']);
     Route::post('new', [ItemController::class, 'store']);
-    Route::get('{id}', [ItemController::class, 'show']);
+    Route::get('/{id}', [ItemController::class, 'show']);
 });

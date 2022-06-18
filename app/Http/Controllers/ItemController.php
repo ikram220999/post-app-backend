@@ -81,10 +81,30 @@ class ItemController extends Controller
         //
         $item = Item::find($id);
 
-        if($item){
-            return response()->json($item, Response::HTTP_OK);
-        }else{
-            return response()->json($item, Response::HTTP_NOT_FOUND);
+        if ($item) {
+
+            $receiver = Receiver::find($item->receiver_id);
+            $staff = Staff::find($item->staff_id);
+
+            if ($staff) {
+
+                $data = [
+                    'item' => $item,
+                    'staff' => $staff,
+                    'rcv' => $receiver,
+                ];
+
+            } else {
+
+                $data = [
+                    'item' => $item,
+                    'rcv' => $receiver,
+                ];
+            }
+
+            return response()->json($data, Response::HTTP_OK);
+        } else {
+            return response()->json(null, Response::HTTP_NOT_FOUND);
         }
 
     }
