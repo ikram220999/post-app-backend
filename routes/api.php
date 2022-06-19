@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ItemStatusController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\StoreController;
@@ -54,4 +55,8 @@ Route::prefix('item')->group(function () {
     Route::get('/', [ItemController::class, 'index']);
     Route::post('new', [ItemController::class, 'store']);
     Route::get('/{id}', [ItemController::class, 'show']);
+});
+
+Route::prefix('item_status')->group(function () {
+    Route::post('/new', [ItemStatusController::class, 'store']);
 });
