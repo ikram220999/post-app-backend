@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item_status;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ItemStatusController extends Controller
 {
@@ -35,7 +36,16 @@ class ItemStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $is= new Item_status();
+
+        $is->item_id = $request->input('id');
+        $is->title = $request->input('title');
+        $is->description = $request->input('description');
+        $is->code_status = $request->input('status');
+
+        $is->save();
+
+        return response()->json($is, Response::HTTP_CREATED);
     }
 
     /**
