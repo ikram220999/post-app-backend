@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Item_status;
 use App\Models\Receiver;
 use App\Models\Staff;
 use App\Models\Store;
@@ -45,6 +46,7 @@ class ItemController extends Controller
     {
         $item = new item();
         $receiver = new Receiver();
+        $item_status = new Item_status();
 
         $store = Store::find($request->input('store'));
         $staff = Staff::select("*")
@@ -66,6 +68,12 @@ class ItemController extends Controller
         $item->tracking_no = $request->input('tracking');
         $item->save();
 
+        $item_status->item_id = $item->id;
+        $item_status->description = "Item in good condition";
+        $item_status->title = "Item Pickup by Store";
+        $item_status->code_status = "PS";
+        $item_status->save();
+
         return response()->json(true, Response::HTTP_CREATED);
 
     }
@@ -85,6 +93,7 @@ class ItemController extends Controller
 
             $receiver = Receiver::find($item->receiver_id);
             $staff = Staff::find($item->staff_id);
+            $status = Item_status::where('item_id', $id)->get();
 
             if ($staff) {
 
@@ -92,6 +101,7 @@ class ItemController extends Controller
                     'item' => $item,
                     'staff' => $staff,
                     'rcv' => $receiver,
+                    'status' => $status,
                 ];
 
             } else {
@@ -99,6 +109,7 @@ class ItemController extends Controller
                 $data = [
                     'item' => $item,
                     'rcv' => $receiver,
+                    'status' => $status,
                 ];
             }
 
