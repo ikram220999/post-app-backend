@@ -23,6 +23,14 @@ class ItemController extends Controller
 
         $item = Item::all();
 
+        foreach($item as $key => $value) {
+            $item_Status = Item_status::latest()->where('item_id', $value['id'])->first();
+
+            // dd($value['id']);
+            $value['status'] = $item_Status;
+           
+        }
+
         return response()->json($item, Response::HTTP_OK);
     }
 
